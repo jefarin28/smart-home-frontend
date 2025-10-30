@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Voice Control</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>?? Smart Home Voice Control</h1>
+        
+        <div class="status-card">
+            <h2>Device Status</h2>
+            <div class="device-status">
+                <div class="device">
+                    <span>?? Light:</span>
+                    <span id="light-status" class="status-badge">OFF</span>
+                </div>
+                <div class="device">
+                    <span>?? Fan:</span>
+                    <span id="fan-status" class="status-badge">OFF</span>
+                </div>
+                <div class="device">
+                    <span>?? Music:</span>
+                    <span id="music-status" class="status-badge">STOPPED</span>
+                </div>
+                <div class="device">
+                    <span>?? Door:</span>
+                    <span id="door-status" class="status-badge">LOCKED</span>
+                </div>
+                <div class="device">
+                    <span>??? Temp:</span>
+                    <span id="temp-status" class="status-badge">22°C</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-card">
+            <h2>Quick Controls</h2>
+            <div class="controls">
+                <button onclick="sendCommand('turn_on_light')" class="btn btn-light">?? Turn On Light</button>
+                <button onclick="sendCommand('turn_off_light')" class="btn btn-light">?? Turn Off Light</button>
+                <button onclick="sendCommand('turn_on_fan')" class="btn btn-fan">?? Turn On Fan</button>
+                <button onclick="sendCommand('turn_off_fan')" class="btn btn-fan">?? Turn Off Fan</button>
+                <button onclick="sendCommand('lock_front_door')" class="btn btn-lock">?? Lock Door</button>
+                <button onclick="sendCommand('unlock_front_door')" class="btn btn-unlock">?? Unlock Door</button>
+                <button onclick="sendCommand('activate_movie_mode')" class="btn btn-mode">?? Movie Mode</button>
+                <button onclick="sendCommand('activate_night_mode')" class="btn btn-mode">?? Night Mode</button>
+            </div>
+        </div>
+
+        <div class="voice-card">
+            <h2>?? Voice Control</h2>
+            <button onclick="startVoiceControl()" class="btn btn-voice" id="voice-btn">Start Listening</button>
+            <div id="voice-status" class="voice-status"></div>
+        </div>
+
+        <div class="chat-card">
+            <h2>?? AI Assistant</h2>
+            <div id="chat-messages" class="chat-messages"></div>
+            <div class="chat-input-group">
+                <input type="text" id="chat-input" placeholder="Ask me anything..." onkeypress="handleChatKeypress(event)">
+                <button onclick="sendChat()" class="btn btn-chat">Send</button>
+            </div>
+        </div>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
