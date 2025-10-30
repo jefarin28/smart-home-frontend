@@ -1,5 +1,5 @@
-// Update this to your deployed backend URL
-const API_URL = 'http://localhost:5000';
+// Update this to your backend URL
+const API_URL = 'https://slow-bushes-happen.loca.lt';
 const socket = io(API_URL);
 
 // Connect to backend via WebSocket
@@ -26,7 +26,7 @@ socket.on('command_result', (data) => {
 async function sendCommand(command) {
     const messageDiv = document.getElementById('message');
     try {
-        const response = await fetch(\\/command\, {
+        const response = await fetch(${API_URL}/command, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ async function sendChat() {
     input.value = '';
     
     try {
-        const response = await fetch(\\/chat\, {
+        const response = await fetch(${API_URL}/chat, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ function startVoiceControl() {
 
 async function updateDeviceStatus() {
     try {
-        const response = await fetch(\\/health\);
+        const response = await fetch(${API_URL}/health);
         const data = await response.json();
         const devices = data.devices;
         
